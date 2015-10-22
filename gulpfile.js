@@ -1,22 +1,20 @@
-var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    minifycss = require('gulp-minify-css'),
-    rename = require('gulp-rename'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    babel = require("gulp-babel");
+const gulp = require('gulp');
+const sass = require('gulp-ruby-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const minifycss = require('gulp-minify-css');
+const rename = require('gulp-rename');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
 
-var paths = {
-  sassSrcPath: './source/css/*.scss',
-  sassDestPath: './build/css'
-}
+const sassSrcPath = './source/css/*.scss';
+const sassDestPath = './build/css';
 
 // Compile and process sass
-gulp.task('process-styles', function () {
-  return sass(paths.sassSrcPath, {})
+gulp.task('process-styles', function() {
+  return sass(sassSrcPath, {})
     .pipe(autoprefixer('last 2 version'))
-    .pipe(gulp.dest(paths.sassDestPath))
+    .pipe(gulp.dest(sassDestPath))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
     .pipe(gulp.dest('./build/css'));
@@ -24,23 +22,23 @@ gulp.task('process-styles', function () {
 
 
 // Compile and process JS
-gulp.task('process-scripts', function () {
-  return gulp.src('source/js/*.js')
-    .pipe(babel())
+gulp.task('process-scripts', function() {
+  return gulp.src('app/**/*.js')
     .pipe(concat('main.js'))
+    .pipe(babel())
     .pipe(gulp.dest('./build/js/'))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
     .pipe(gulp.dest('./build/js/'));
-})
+});
 
 
 // Watch files for changes
 gulp.task('watch', function() {
   gulp.watch(
-    'source/js/*.js', ['process-scripts'],
-    'source/css/*.scss', ['process-styles']
-    )
+    'app/*.js', ['process-scripts'],
+    'sass/*.scss', ['process-styles']
+    );
 });
 
 
