@@ -3,5 +3,6 @@
 /build
 /dist
 /vendor
+node_modules/*
 **/.sass-cache
 **/.sass-cache/*
