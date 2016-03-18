@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+
+  <title>pixi.js example 1</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Hello World</h1>
+  </div>
+
+  <script>
+
+    //Create the renderer
+    var renderer = PIXI.autoDetectRenderer(256, 256);
+
+    //Add the canvas to the HTML document
+    document.body.appendChild(renderer.view);
+
+    //Create a container object called the `stage`
+    var stage = new PIXI.Container();
+
+    //Tell the `renderer` to `render` the `stage`
+    renderer.render(stage);
+
+  </script>
+
+  </body>
+</html>

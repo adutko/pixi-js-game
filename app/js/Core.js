@@ -1,26 +1,26 @@
-import PIXI from 'pixi.js';
+// import PIXI from 'pixi.js';
 // import eventable from 'app/util/eventable';
 // import { autobind } from 'core-decorators';
 
-// @eventable('frame')
-export default class Core {
+// //@eventable('frame')
+// export default class Core {
 
-  constructor() {
-    this.isRunning = false;
-  }
+//   constructor() {
+//     this.isRunning = false;
+//   }
 
-  attach(elem) {
-    this.renderer = new PIXI.WebGLRenderer(window.innerWidth, window.innerHeight);
+//   attach(elem) {
+//     this.renderer = new PIXI.WebGLRenderer(window.innerWidth, window.innerHeight);
 
-    this.stage = new PIXI.Container();
+//     this.stage = new PIXI.Container();
 
-    this.container = new PIXI.Container();
-    this.stage.addChild(this.container);
+//     this.container = new PIXI.Container();
+//     this.stage.addChild(this.container);
 
-    this.resize();
-    elem.appendChild(this.renderer.view);
-  }
-}
+//     this.resize();
+//     elem.appendChild(this.renderer.view);
+//   }
+
 
 //   start() {
 //     if (this.isRunning) { return; }
